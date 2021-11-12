@@ -79,7 +79,7 @@
 }
 
 .char-selected {
-    background-color: #dc143c;
+    background-color: #509c86;
 }
 
 .disabled {
@@ -130,13 +130,13 @@
 
 #delete {
     display: none;
-    background-color: #dc143c;
+    background-color: #50a088;
     border-radius: .3vh;
     transition: all 0.2s ease;
 }
 
 #delete:hover {
-    background-color: #eb3434;
+    background-color: #50a388;
 }
 
 .character-info {
@@ -282,7 +282,7 @@
     bottom: 0;
     right: 5%;
     margin-bottom: 20px;
-    background-color: #dc143c;
+    background-color: #509c89;
     border-radius: 4px;
     transition: 0.2s;
     overflow: visible !important;
@@ -327,7 +327,7 @@
 .material-icons-one {
     margin-left: 39.5vh;
     color: #ededed;
-    background-color: #dc143c;
+    background-color: #4caa92;
     font-size: 1.3vh;
     font-weight: 900;
     border-radius: .3vh;
@@ -453,7 +453,7 @@ input[type="date"]::-webkit-clear-button {
     position: absolute;
     max-width: 87%;
     height: 4vh;
-    background-color: #dc143c;
+    background-color: #51b39a;
     border-radius: .3vh;
     bottom: 3vh;
     margin: 0 auto;
