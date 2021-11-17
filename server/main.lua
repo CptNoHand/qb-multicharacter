@@ -150,13 +150,10 @@ QBCore.Functions.CreateCallback("qb-multicharacter:server:setupCharacters", func
 end)
 
 QBCore.Functions.CreateCallback("qb-multicharacter:server:getSkin", function(source, cb, cid)
-    local result = exports.oxmysql:executeSync('SELECT * FROM players WHERE citizenid = ?', {cid, 1})
-    local PlayerData = result[1]
-    PlayerData.model = json.decode(PlayerData.skin)
-    if PlayerData.skin ~= nil then
-        cb(PlayerData.skin, PlayerData.model.model)
+    local result = exports.oxmysql:executeSync('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {cid, 1})
+    if result[1] ~= nil then
+        cb(result[1].model, result[1].skin)
     else
         cb(nil)
     end
 end)
-
