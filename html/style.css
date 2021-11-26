@@ -280,12 +280,12 @@
 }
 
 .char-selected {
-    box-shadow: 0 0 100px rgba(255, 1, 1, 0.4) !important;
+    box-shadow: 0 0 100px rgba(1, 255, 192, 0.4) !important;
     border-top: 2px solid;
     border-bottom: 2px solid;
     border-left: 0.5px solid;
     border-right:0.5px solid;
-    border-image: linear-gradient(var(--angle), #dc143c,#c3252500,#c3252500,#c3252500,#dc143c) 1;
+    border-image: linear-gradient(var(--angle), #14dcd2,#c3252500,#c3252500,#c3252500,#14c5dc) 1;
     animation: 3s rotate linear infinite,gradient 15s ease infinite;
     background: linear-gradient(-45deg, #351c1ca1, #2b1010ab,#270505a6,#2c0808a1,#290202b0);
     background-size: 400% 400%;
@@ -333,7 +333,7 @@
     border-radius: 4px;
     transition: 0.2s;
     overflow: visible !important;
-    background: linear-gradient(-45deg, #682e3ac2, #913144c9,#72192bc0,#a01732c4,#ff0033c4);
+    background: linear-gradient(-45deg, #2e6668c2, #318391c9,#194e72c0,#179ba0c4,#00eeffc4);
     background-size: 400% 400%;
     border-radius: .3vh;
     transition: all 0.2s ease;
@@ -348,7 +348,7 @@
     overflow: visible !important;
     background: linear-gradient(-45deg, #682e3ac2, #913144c9,#72192bc0,#a01732c4,#ff0033c4);
     background-size: 400% 400%;
-    border-image: linear-gradient(var(--angle), #ff0033,#25b6c300,#ff0033,#25b6c300) 1;
+    border-image: linear-gradient(var(--angle), #00ffff,#25b6c300,#00ffff,#25b6c300) 1;
     font-size:5vh;
     transform:scale(1.05);
     cursor: pointer;
@@ -364,7 +364,7 @@
     background-size: 400% 400%;
     border-radius: .3vh;
     transition: all 0.2s ease;
-    box-shadow: 0 0 5px #ff0033 !important;
+    box-shadow: 0 0 5px #0051ff !important;
 }
 
 #delete:hover {
@@ -372,11 +372,11 @@
     border-radius: .6vh;
     border:3px solid black;
     transition: 0.2s;
-    box-shadow: 0 0 10px #ff0033 !important;
+    box-shadow: 0 0 10px #00aeff !important;
     overflow: visible !important;
     background: linear-gradient(-45deg, #30151ac2, #36121ac9,#3d0d17c0,#3a0812c4,#49000fc4);
     background-size: 400% 400%;
-    border-image: linear-gradient(var(--angle), #ff0033,#25b6c300,#ff0033,#25b6c300) 1;
+    border-image: linear-gradient(var(--angle), #00d9ff,#25b6c300,#00b7ff,#25b6c300) 1;
     font-size:5vh;
     transform:scale(1.05);
     cursor: pointer;
@@ -399,9 +399,9 @@
     border-left: 2px solid;
     border-right: 2px solid;
     box-shadow: 0 0 40px rgb(30 0 0 / 98%) !important;
-    border-image: linear-gradient(var(--angle), #dc143c,#c3252500,#c3252500,#c3252500,#dc143c) 1;
+    border-image: linear-gradient(var(--angle), #14cfdc,#25bec300,#c3252500,#c3252500,#14d5dc) 1;
     animation:5s rotate linear infinite,shake-slow3 10s ease-in-out infinite,gradient 15s ease infinite;
-    background: linear-gradient(-45deg, #351c1ca1, #2b1010ab,#270505a6,#2c0808a1,#290202b0);
+    background: linear-gradient(-45deg, #1c2935a1, #10192b67,#051f27a6,#081f2ca1,#022029b0);
     background-size: 400% 400%;
 }
 
@@ -481,7 +481,7 @@
     padding: 30px;
     font-family: 'Poppins', sans-serif;
     box-shadow: 0 0 40px rgb(30 0 0 / 98%) !important;
-    border-image: linear-gradient(var(--angle), #dc143c,#c3252500,#c3252500,#c3252500,#dc143c) 1;
+    border-image: linear-gradient(var(--angle), #14dcdc,#2577c300,#257cc300,#256ac300,#14c5dc) 1;
     animation:gradient 15s ease infinite;
     color: #ededed;
     font-family: 'Poppins', sans-serif;
@@ -562,7 +562,7 @@
     border-radius: 4px;
     transition: 0.2s;
     overflow: visible !important;
-    background: linear-gradient(-45deg, #682e3a, #913144,#72192b,#a01732,#ff0033);
+    background: linear-gradient(-45deg, #2e5c68, #318691,#197263,#17a099,#00fff2);
     background-size: 400% 400%;
 }
 
@@ -579,9 +579,9 @@
     transition: 0.2s;
     box-shadow: 0 0 20px #ff0033 !important;
     overflow: visible !important;
-    background: linear-gradient(-45deg, #682e3a, #913144,#72192b,#a01732,#ff0033);
+    background: linear-gradient(-45deg, #2e685e, #319191,#196872,#1797a0,#00fff2);
     background-size: 400% 400%;
-    border-image: linear-gradient(var(--angle), #ff0033,#25b6c300,#25b6c300,#25b6c300,#ff0033) 1;
+    border-image: linear-gradient(var(--angle), #00ffdd,#25b6c300,#25b6c300,#25b6c300,#00ffdd) 1;
     cursor: pointer;
 }
 
@@ -621,7 +621,7 @@
     font-family: 'Poppins', sans-serif;
     box-shadow: 0 0 40px rgb(20 0 0 / 98%) !important;
     animation: 8s rotate linear infinite,shake-slow 10s ease-in-out infinite;
-    border-image: linear-gradient(var(--angle), #dc143c,#c3252500,#c3252500,#c3252500,#dc143c) 1;
+    border-image: linear-gradient(var(--angle), #14dc89,#c3252500,#c3252500,#c3252500,#14dca0) 1;
 
 }
 
