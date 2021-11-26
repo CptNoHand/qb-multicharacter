@@ -37,14 +37,31 @@ end
 
 local function openCharMenu(bool)
     SetNuiFocus(bool, bool)
-    SendNUIMessage({
-        action = "ui",
-        toggle = bool,
-    })
-    skyCam(bool)
+    QBCore.Functions.TriggerCallback("qb-multi:server:GetCurrentPlayers", function(Players)
+        --QBCore.Functions.TriggerCallback('sa_vips:obtenerTipoDeVip', function(vipType)
+            --QBCore.Functions.TriggerCallback('sa_vips:obtenerNivel', function(LevelType)
+                SendNUIMessage({
+                    action = "ui",
+                    toggle = bool,
+                    players = Players,
+                    --vip = vipType,
+                    --nivel = LevelType,
+                })
+                --print(vipType)
+                --print(LevelType)
+                skyCam(bool)
+            end)
+        --end)
+    --end)   
 end
 
 -- Events
+
+AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
+    SendNUIMessage({
+        action = "stopMusic"
+    })
+end)
 
 RegisterNetEvent('qb-multicharacter:client:closeNUIdefault', function() -- This event is only for no starting apartments
     DeleteEntity(charPed)
