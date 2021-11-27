@@ -395,5 +395,5 @@ qbMultiCharacters.resetAll = function() {
 }
 
 function musicFadeOut() {
-    $(background).animate({ volume: 0 }, 3000);
+    $(background).animate({ volume: 0 }, 9000);
 }
