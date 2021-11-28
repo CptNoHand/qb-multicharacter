@@ -54,7 +54,7 @@ $(document).ready(function (){
                         $("#loading-text").html(originalText);
                         loadingDots = 0;
                     }
-                }, 3000);
+                }, 9000);
 
                 refreshCharacters()
                 setTimeout(function(){
