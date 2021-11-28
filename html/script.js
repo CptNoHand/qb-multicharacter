@@ -25,7 +25,7 @@ $(document).ready(function (){
                 $('.bottombar').css("top", "50%");
                 $('.fondocolor').hide();
                 $('.btn-iniciar').hide();
-                $(".welcomescreen").fadeIn(450);
+                $(".welcomescreen").fadeIn(150);
                 qbMultiCharacters.resetAll();
 
                 var originalText = "Recuperando datos del jugador";
@@ -388,7 +388,7 @@ qbMultiCharacters.resetAll = function() {
     $('.character-info').css("top", "-40");
     $('.welcomescreen').css("top", WelcomePercentage);
     $(".main-screen").fadeIn();
-    $(".welcomescreen").fadeIn(1500);
+    $(".welcomescreen").fadeIn(300);
     $(".fondo-negro").fadeIn(0);
     $('.server-log').show();
     $('.server-log').css("top", "25%");
