@@ -234,6 +234,7 @@
     border-bottom: 4px solid #74aa3200;
     transition: .1s linear;
     border-radius: .3vh;
+    cursor: pointer;
 }
 
 .character > span {
@@ -314,6 +315,7 @@
     float: left;
     margin-top: 10px;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .character-btn > p {
@@ -418,7 +420,6 @@
     position: absolute;
     font-size: 2vh;
     color: #ededed;
-    top: -2.9vh;
     left: -5vh;
     letter-spacing: .1vh;
     font-weight: 900;
@@ -442,7 +443,7 @@
 
 .character-info-valid {
     position: relative;
-    top: 10%;
+    top: 15%;
     overflow: visible !important;
 }
 
@@ -625,6 +626,12 @@
 
 }
 
+i#close-reg {
+    position: relative;
+    top: -2vh;
+    cursor: pointer;
+}
+
 .material-icons-one {
     margin-left: 39.5vh;
     color: #ededed;
@@ -658,7 +665,6 @@
     text-align: left;
     font-size: 2vh;
     font-weight: 900;
-    margin-top: -1.3vh;
 }
 
 .char-register-inputs {
@@ -684,6 +690,7 @@
     font-family: 'Poppins', sans-serif;
     text-align: center;
     transition: all 0.2s ease-in-out;
+    cursor: text;
 }
 
 select {
@@ -707,6 +714,7 @@ select {
     text-indent: 1px;
     text-overflow: '';
     transition: all 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 select:hover {
