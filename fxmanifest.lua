@@ -18,6 +18,7 @@ files {
     'html/musica.mp3',
     'html/click.wav',
     'html/qb-pixel.png',
+    'html/profanity.js',
 }
 
 dependencies {
