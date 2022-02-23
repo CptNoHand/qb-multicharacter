@@ -1,9 +1,9 @@
 # qb-multicharacter
 qb-multicharacter design
 
-# Simple cool design for qb-multicharacter
-Preview:
-Video: https://streamable.com/kxes0c
+Added support for setting default number of characters per player per Rockstar license
+
+# License
 
 Images:
 ![](https://cdn.discordapp.com/attachments/797581154315927573/913605200894390322/unknown.png)
