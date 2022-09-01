@@ -155,7 +155,6 @@
     height: 100vh;
     width: 100vw;
     left: 0;
-    top: 0;
     z-index: 100;
 }
 
@@ -167,8 +166,9 @@
 }
 
 .characters-list {
+    display: none;
     position: absolute;
-    width: 26%;
+    width: 22%;
     height: 70%;
     left: 14%;
     top: -40%;
@@ -231,7 +231,7 @@
 
 .characters {
     width: 100%;
-    height: 72.5%;
+    height: 75%;
     overflow: scroll !important;
 }
 
@@ -303,7 +303,11 @@
 
 }
 
-.slot-name {
+.disabled {
+    background-color: rgba(0, 0, 0, 0.691);
+}
+
+#slot-name {
     position: relative;
     color: #ededed;
     font-size: 17px;
@@ -312,20 +316,15 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.character-btns {
-    position: absolute;
-    bottom: 25px;
-    left: 20px;
-    right: 20px;
-}
-
 .character-btn {
+    position: static;
     width: 100%;
     height: 5.0vh;
     top: 65%;
     transition: 0.2s;
     float: left;
     margin-top: 10px;
+    margin-right: 10px;
     cursor: pointer;
     overflow: visible !important;
 }
@@ -397,12 +396,10 @@
 }
 
 .character-info {
-    min-width: 22.5%;
-    max-width: 27.5%;
-    width: fit-content;
-    min-height: 50%;
-    height: fit-content;
+    display: none;
     position: absolute;
+    width: 20%;
+    height: 50%;
     right: 14%;
     top: -40%;
     border-radius: .2vh;
@@ -431,8 +428,7 @@
 
 #char-info-titel {
     text-transform: uppercase;
-    width: 100%;
-    text-align: center;
+    position: absolute;
     font-size: 2vh;
     color: #ededed;
     top: -2.9vh;
@@ -442,12 +438,12 @@
     overflow: visible !important;
 }
 
-.no-char {
+#no-char {
+    position: absolute;
     color: #ededed;
     font-size: 20px;
     top: 30%;
     text-align: center;
-    display: block;
 }
 
 .char-info-titel {
@@ -468,17 +464,23 @@
     color: #ededed;
     font-size: 1.5vh;
     width: 100%;
-
-    border-spacing: 0rem 1rem;
-    border-collapse: separate;
+    height: 2.9vh;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 12px;
 }
 
-.character-info table td {
-    color: white;
-    font-size: 17.5px;
+.char-info-js {
+    position: absolute;
+    left: 50%;
+}
+
+#info-label {
+    margin-left: 10px;
 }
 
 .character-delete {
+    display: none;
     position: absolute;
     width: 33vh;
     height: 15vh;
@@ -495,24 +497,14 @@
     border-image: linear-gradient(var(--angle), #14dcdc,#2577c300,#257cc300,#256ac300,#14c5dc) 1;
     animation:gradient 15s ease infinite;
     color: #ededed;
-    background-color: rgb(27 33 49 / 95%);
-    border-radius: 5px;
-    box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
     font-family: 'Poppins', sans-serif;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
     overflow: visible !important;
 }
 
-.v-btn__content {
-    color: white!important;
-    font-size: 1rem!important;
-    font-weight: 600!important;
-}
-
 .characters-delete-block-header {
+    position: absolute;
     width: 100%;
+    height: 11%;
     color: #ededed;
     text-align: left;
     font-size: 2vh;
@@ -656,11 +648,11 @@
 }
 
 .character-register {
+    display: none;
     position: relative;
     width: 25%;
-    height: fit-content;
-    top: 50%;
-    transform: translateY(-50%);
+    height: 32%;
+    top: 125%;
     margin-left: auto;
     margin-right: auto;
     left: 27%;
@@ -678,7 +670,7 @@
     top: -2vh;
     float: right;
     font-size: 1.5vh;
-    right: 0px;
+    right: 6vh;
     cursor: pointer;
 }
 
@@ -707,7 +699,9 @@
 
 .characters-register-block-header {
     text-transform: uppercase;
+    position: absolute;
     width: 100%;
+    height: 12vh;
     color: #ededed;
     text-align: left;
     font-size: 2vh;
@@ -716,6 +710,8 @@
 }
 
 .char-register-inputs {
+    position: absolute;
+    top: 14%;
     overflow: visible !important;
 }
 
@@ -770,12 +766,22 @@ select:focus {
     background-color: rgba(34, 34, 34, 0.808);
 }
 
+#gender option {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
 select::placeholder {
     text-align: center;
 }
 
 select::-ms-expand {
     display: none;
+}
+
+.char-reg-input::placeholder {
+    color: rgba(255, 255, 255, 0.52);
 }
 
 input[type="date"] {
@@ -856,7 +862,7 @@ input[type="date"]::-webkit-clear-button {
     font-weight: 900;
 }
 
-.loading-container {
+.loading-rondje {
     position: absolute;
     margin: 0 auto;
     left: 48%;
@@ -898,7 +904,7 @@ input[type="date"]::-webkit-clear-button {
     border-radius: 7px;
 }
 
-.loading-circle div:nth-child(1) {
+.lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
 }
 .lds-ring div:nth-child(2) {
@@ -908,7 +914,7 @@ input[type="date"]::-webkit-clear-button {
     animation-delay: -0.15s;
 }
 
-@keyframes loading-circle {
+@keyframes lds-ring {
     0% {
         transform: rotate(0deg);
     }
