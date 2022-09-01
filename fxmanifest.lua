@@ -18,11 +18,13 @@ files {
     'html/index.html',
     'html/style.css',
     'html/reset.css',
+    "html/vue.js",
+    "html/swal2.js",
+    'html/profanity.js',
     'html/script.js',
     'html/musica.mp3',
     'html/click.wav',
     'html/qb-pixel.png',
-    'html/profanity.js',
 }
 
 dependencies {
