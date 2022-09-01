@@ -10,15 +10,13 @@ var swipe = document.getElementById("click");
 var click = document.getElementById("click");
 var over_button = document.getElementById("click");
 var NChar = null;
-var EnableDeleteButton = false;
-var dollar = Intl.NumberFormat('en-US');
 
 $(document).ready(function (){
     window.addEventListener('message', function (event) {
         var data = event.data;
+
         if (data.action == "ui") {
 			NChar = data.nChar;
-            EnableDeleteButton = data.enableDeleteButton;
             if (data.toggle) {
                 $('.container').show();
                 $('.jugadores-on').hide();
@@ -150,9 +148,8 @@ function setupCharInfo(cData) {
         '<div class="character-info-box"><span id="info-label">Gender: </span><span class="char-info-js">'+gender+'</span></div>' +
         '<div class="character-info-box"><span id="info-label">Nationality: </span><span class="char-info-js">'+cData.charinfo.nationality+'</span></div>' +
         '<div class="character-info-box"><span id="info-label">Job: </span><span class="char-info-js">'+cData.job.label+'</span></div>' +
-	'<div class="character-info-box"><span id="info-label">Grade </span><span class="char-info-js">' + cData.job.grade.name + '</span></div>' +
-        '<div class="character-info-box"><span id="info-label">Cash: </span><span class="char-info-js">&#36; '+dollar.format(cData.money.cash)+'</span></div>' +
-        '<div class="character-info-box"><span id="info-label">Bank: </span><span class="char-info-js">&#36; '+dollar.format(cData.money.bank)+'</span></div>' +
+        '<div class="character-info-box"><span id="info-label">Cash: </span><span class="char-info-js">&#36; '+cData.money.cash+'</span></div>' +
+        '<div class="character-info-box"><span id="info-label">Bank: </span><span class="char-info-js">&#36; '+cData.money.bank+'</span></div>' +
         '<div class="character-info-box"><span id="info-label">Phone number: </span><span class="char-info-js">'+cData.charinfo.phone+'</span></div>' +
         '<div class="character-info-box"><span id="info-label">Account number: </span><span class="char-info-js">'+cData.charinfo.account+'</span></div>');
     }
@@ -199,9 +196,7 @@ $(document).on('click', '.character', function(e) {
             $("#play-text").html('<i class="fa fa-sign-in" aria-hidden="true"></i> Play');
             $("#delete-text").html('<i class="fa fa-trash" aria-hidden="true"></i> Delete');
             $("#play").css({"display":"block"});
-            if (EnableDeleteButton) {
-                $("#delete").css({"display":"block"});
-            }
+            $("#delete").css({"display":"block"});
             $.post('https://qb-multicharacter/cDataPed', JSON.stringify({
                 cData: cDataPed
             }));
@@ -224,9 +219,7 @@ $(document).on('click', '.character', function(e) {
             $("#play-text").html('<i class="fa fa-sign-in" aria-hidden="true"></i> Play');
             $("#delete-text").html('<i class="fa fa-trash" aria-hidden="true"></i> Delete');
             $("#play").css({"display":"block"});
-            if (EnableDeleteButton) {
-                $("#delete").css({"display":"block"});
-            }
+            $("#delete").css({"display":"block"});
             $.post('https://qb-multicharacter/cDataPed', JSON.stringify({
                 cData: cDataPed
             }));
@@ -252,31 +245,26 @@ function escapeHtml(string) {
 }
 function hasWhiteSpace(s) {
     return /\s/g.test(s);
-}
-
+  }
 $(document).on('click', '#create', function (e) {
     e.preventDefault();
 
-    let firstname= $.trim(escapeHtml($('#first_name').val()))
-    let lastname= $.trim(escapeHtml($('#last_name').val()))
-    let nationality= $.trim(escapeHtml($('#nationality').val()))
-    let birthdate= $.trim(escapeHtml($('#birthdate').val()))
-    let gender= $.trim(escapeHtml($('select[name=gender]').val()))
-    let cid = $.trim(escapeHtml($(selectedChar).attr('id').replace('char-', '')))
-    let re = '(' + profList.join('|') + ')\\b'
-    const regTest = new RegExp(re, 'i');
+    let firstname= escapeHtml($('#first_name').val())
+    let lastname= escapeHtml($('#last_name').val())
+    let nationality= escapeHtml($('#nationality').val())
+    let birthdate= escapeHtml($('#birthdate').val())
+    let gender= escapeHtml($('select[name=gender]').val())
+    let cid = escapeHtml($(selectedChar).attr('id').replace('char-', ''))
+    const regTest = new RegExp(profList.join('|'), 'i');
+    //An Ugly check of null objects
 
-    if (!firstname || !lastname || !nationality || !birthdate){
-        var reqFieldErr = '<p>You are missing required fields!</p>'
-        $('.error-msg').html(reqFieldErr)
-        $('.error').fadeIn(400)
+    if (!firstname || !lastname || !nationality || !birthdate || hasWhiteSpace(firstname) || hasWhiteSpace(lastname)|| hasWhiteSpace(nationality) ){
+        console.log("FIELDS REQUIRED")
         return false;
     }
 
     if(regTest.test(firstname) || regTest.test(lastname)){
-        var profanityErr = '<p>You used a derogatory/vulgar term. Please try again!<p>'
-        $('.error-msg').html(profanityErr)
-        $('.error').fadeIn(400)
+        console.log("ERROR: You used a derogatory/vulgar term. Please try again!")
         return false;
     }
 
@@ -311,19 +299,11 @@ $(document).on('click', '#cancel-delete', function(e){
     $('.character-delete').fadeOut(150);
 });
 
-$(document).on('click', '#close-error', function(e){
-    e.preventDefault();
-    $('.characters-block').css("filter", "none");
-    $('.error').fadeOut(150);
-});
-
 function setCharactersList() {
     var htmlResult = '<div class="character-list-header"><p>My Characters</p></div>'
-    htmlResult += '<div class="characters">'
     for (let i = 1; i <= NChar; i++) {
         htmlResult += '<div class="character" id="char-'+ i +'" data-cid=""><span id="slot-name">Empty Slot<span id="cid"></span></span></div>'
     }
-    htmlResult += '</div>'
     htmlResult += '<div class="character-btn" id="play"><p id="play-text">Select a character</p></div><div class="character-btn" id="delete"><p id="delete-text">Select a character</p></div>'
     $('.characters-list').html(htmlResult)
 }
@@ -349,7 +329,6 @@ function refreshCharacters() {
 
 $("#close-reg").click(function (e) {
     e.preventDefault();
-    $('.error').fadeOut(150);
     $('.characters-list').css("filter", "none")
     $('.character-info').css("filter", "none")
     //mostrar
@@ -439,7 +418,6 @@ qbMultiCharacters.resetAll = function() {
     $(".fondo-negro").fadeIn(0);
     $('.server-log').show();
     $('.server-log').css("top", "25%");
-    selectedChar = null;
 }
 
 function musicFadeOut() {
