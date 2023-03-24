@@ -121,6 +121,16 @@ end)
 
 -- Callbacks
 
+QBCore.Functions.CreateCallback("qb-multicharacter:server:getSkin", function(_, cb, cid)
+    local result = MySQL.query.await('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {cid, 1})
+    if result[1] ~= nil then
+        cb(json.decode(result[1].skin))
+    else
+        cb(nil)
+    end
+end)
+
+
 QBCore.Functions.CreateCallback('qb-multi:server:GetCurrentPlayers', function(source, cb)
     local TotalPlayers = 0
     for k, v in pairs(QBCore.Functions.GetPlayers()) do
@@ -175,13 +185,4 @@ QBCore.Functions.CreateCallback("qb-multicharacter:server:setupCharacters", func
         end
         cb(plyChars)
     end)
-end)
-
-QBCore.Functions.CreateCallback("qb-multicharacter:server:getSkin", function(source, cb, cid)
-    local result = MySQL.Sync.fetchAll('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {cid, 1})
-    if result[1] ~= nil then
-        cb(result[1].model, result[1].skin)
-    else
-        cb(nil)
-    end
 end)

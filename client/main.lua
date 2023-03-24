@@ -117,14 +117,14 @@ RegisterNUICallback('selectCharacter', function(data)
     DeleteEntity(charPed)
 end)
 
-RegisterNUICallback('cDataPed', function(data)
-    local cData = data.cData  
+RegisterNUICallback('cDataPed', function(nData, cb)
+    local cData = nData.cData
     SetEntityAsMissionEntity(charPed, true, true)
     DeleteEntity(charPed)
     if cData ~= nil then
-        QBCore.Functions.TriggerCallback('qb-multicharacter:server:getSkin', function(model, data)
-            model = model ~= nil and tonumber(model) or false
-            if model ~= nil then
+        QBCore.Functions.TriggerCallback('qb-multicharacter:server:getSkin', function(skinData)
+            if skinData then
+                local model = joaat(skinData.model)
                 CreateThread(function()
                     RequestModel(model)
                     while not HasModelLoaded(model) do
@@ -136,8 +136,7 @@ RegisterNUICallback('cDataPed', function(data)
                     SetEntityInvincible(charPed, true)
                     PlaceObjectOnGroundProperly(charPed)
                     SetBlockingOfNonTemporaryEvents(charPed, true)
-                    data = json.decode(data)
-                    TriggerEvent('qb-clothing:client:loadPlayerClothing', data, charPed)
+                    exports['fivem-appearance']:setPedAppearance(charPed, skinData)
                     -- ANIMS
                     local  RandomAnims = {     
                         "WORLD_HUMAN_HANG_OUT_STREET",
@@ -168,7 +167,7 @@ RegisterNUICallback('cDataPed', function(data)
                         "mp_m_freemode_01",
                         "mp_f_freemode_01",
                     }
-                    local model = GetHashKey(randommodels[math.random(1, #randommodels)])
+                    model = joaat(randommodels[math.random(1, #randommodels)])
                     RequestModel(model)
                     while not HasModelLoaded(model) do
                         Wait(0)
@@ -181,6 +180,7 @@ RegisterNUICallback('cDataPed', function(data)
                     SetBlockingOfNonTemporaryEvents(charPed, true)
                 end)
             end
+            cb("ok")
         end, cData.citizenid)
     else
         CreateThread(function()
@@ -188,7 +188,7 @@ RegisterNUICallback('cDataPed', function(data)
                 "mp_m_freemode_01",
                 "mp_f_freemode_01",
             }
-            local model = GetHashKey(randommodels[math.random(1, #randommodels)])
+            local model = joaat(randommodels[math.random(1, #randommodels)])
             RequestModel(model)
             while not HasModelLoaded(model) do
                 Wait(0)
@@ -200,8 +200,10 @@ RegisterNUICallback('cDataPed', function(data)
             PlaceObjectOnGroundProperly(charPed)
             SetBlockingOfNonTemporaryEvents(charPed, true)
         end)
+        cb("ok")
     end
 end)
+
 
 RegisterNUICallback('setupCharacters', function()
     QBCore.Functions.TriggerCallback("qb-multicharacter:server:setupCharacters", function(result)

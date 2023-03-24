@@ -450,4 +450,7 @@ const profList = [
     "willy",
     "xrated",
     "xxx",
+    "ä",
+    "ü",
+    "ö",
 ];
