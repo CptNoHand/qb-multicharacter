@@ -15,6 +15,11 @@ local function GiveStarterItems(source)
             info.birthdate = Player.PlayerData.charinfo.birthdate
             info.gender = Player.PlayerData.charinfo.gender
             info.nationality = Player.PlayerData.charinfo.nationality
+        elseif v.item == "driver_license" then
+            info.firstname = Player.PlayerData.charinfo.firstname
+            info.lastname = Player.PlayerData.charinfo.lastname
+            info.birthdate = Player.PlayerData.charinfo.birthdate
+            info.type = "Class C Driver License"
         end
         Player.Functions.AddItem(v.item, v.amount, false, info)
     end
@@ -53,13 +58,13 @@ end
 
 -- Commands
 
-QBCore.Commands.Add("logout", Lang:t("commands.logout_description"), {}, false, function(source)
+QBCore.Commands.Add("logout", "Logout of Character (Admin Only)", {}, false, function(source)
     local src = source
     QBCore.Player.Logout(src)
     TriggerClientEvent('qb-multicharacter:client:chooseChar', src)
 end, "admin")
 
-QBCore.Commands.Add("closeNUI", Lang:t("commands.closeNUI_description"), {}, false, function(source)
+QBCore.Commands.Add("closeNUI", "Close Multi NUI", {}, false, function(source)
     local src = source
     TriggerClientEvent('qb-multicharacter:client:closeNUI', src)
 end)
@@ -68,7 +73,7 @@ end)
 
 RegisterNetEvent('qb-multicharacter:server:disconnect', function()
     local src = source
-    DropPlayer(src, Lang:t("commands.droppedplayer"))
+    DropPlayer(src, "You have disconnected from QBCore")
 end)
 
 RegisterNetEvent('qb-multicharacter:server:loadUserData', function(cData)
@@ -78,8 +83,8 @@ RegisterNetEvent('qb-multicharacter:server:loadUserData', function(cData)
         QBCore.Commands.Refresh(src)
         loadHouseData()
         TriggerClientEvent('apartments:client:setupSpawnUI', src, cData)
-        TriggerEvent("qb-log:server:CreateLog", "joinleave", "Loaded", "green", "**".. GetPlayerName(src) .. "** (<@"..(QBCore.Functions.GetIdentifier(src, 'discord'):gsub("discord:", "") or "unknown").."> |  ||"  ..(QBCore.Functions.GetIdentifier(src, 'ip') or 'undefined') ..  "|| | " ..(QBCore.Functions.GetIdentifier(src, 'license') or 'undefined') .." | " ..cData.citizenid.." | "..src..") loaded..")
-    end
+        TriggerEvent("qb-log:server:CreateLog", "joinleave", "Loaded", "green", "**".. GetPlayerName(src) .. "** ("..(QBCore.Functions.GetIdentifier(src, 'discord') or 'undefined') .." |  ||"  ..(QBCore.Functions.GetIdentifier(src, 'ip') or 'undefined') ..  "|| | " ..(QBCore.Functions.GetIdentifier(src, 'license') or 'undefined') .." | " ..cData.citizenid.." | "..src..") loaded..")
+	end
 end)
 
 RegisterNetEvent('qb-multicharacter:server:createCharacter', function(data)
@@ -111,7 +116,7 @@ RegisterNetEvent('qb-multicharacter:server:deleteCharacter', function(citizenid)
     local src = source
     print(src, citizenid)
     QBCore.Player.DeleteCharacter(src, citizenid)
-    TriggerClientEvent('QBCore:Notify', src, Lang:t("notifications.char_deleted") , "success")
+
 end)
 
 -- Callbacks

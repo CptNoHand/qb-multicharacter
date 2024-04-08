@@ -1,6 +1,5 @@
 local cam = nil
 local charPed = nil
-local loadScreenCheckState = false
 local QBCore = exports['qb-core']:GetCoreObject()
 
 -- Main Thread
@@ -38,26 +37,13 @@ end
 
 local function openCharMenu(bool)
     QBCore.Functions.TriggerCallback("qb-multicharacter:server:GetNumberOfCharacters", function(result)
-        local translations = {}
-        for k in pairs(Lang.fallback and Lang.fallback.phrases or Lang.phrases) do
-            if k:sub(0, ('ui.'):len()) then
-                translations[k:sub(('ui.'):len() + 1)] = Lang:t(k)
-            end
-        end
         SetNuiFocus(bool, bool)
         SendNUIMessage({
             action = "ui",
-            customNationality = Config.customNationality,
             toggle = bool,
             nChar = result,
-            enableDeleteButton = Config.EnableDeleteButton,
-            translations = translations
         })
         skyCam(bool)
-        if not loadScreenCheckState then
-            ShutdownLoadingScreenNui()
-            loadScreenCheckState = true
-        end
     end)
 end
 
@@ -150,7 +136,7 @@ RegisterNUICallback('cDataPed', function(nData, cb)
                     SetEntityInvincible(charPed, true)
                     PlaceObjectOnGroundProperly(charPed)
                     SetBlockingOfNonTemporaryEvents(charPed, true)
-                    exports['fivem-appearance']:setPedAppearance(charPed, skinData)
+                    exports['illenium-appearance']:setPedAppearance(charPed, skinData)
                     -- ANIMS
                     local  RandomAnims = {     
                         "WORLD_HUMAN_HANG_OUT_STREET",
@@ -235,9 +221,9 @@ end)
 RegisterNUICallback('createNewCharacter', function(data)
     local cData = data
     DoScreenFadeOut(150)
-    if cData.gender == Lang:t("ui.male") then
+    if cData.gender == "Male" then
         cData.gender = 0
-    elseif cData.gender == Lang:t("ui.female") then
+    elseif cData.gender == "Female" then
         cData.gender = 1
     end
     TriggerServerEvent('qb-multicharacter:server:createCharacter', cData)
