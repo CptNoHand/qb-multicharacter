@@ -220,10 +220,10 @@ RegisterNUICallback('cDataPed', function(nData, cb)
 
         if model ~= nil then
             initializePedModel(model, json.decode(data))
-            exports['illenium-appearance']:setPedAppearance(charPed, skinData)
+            exports['fivem-appearance']:setPedAppearance(charPed, skinData)
         else
             initializePedModel()
-            exports['illenium-appearance']:setPedAppearance(charPed, skinData)
+            exports['fivem-appearance']:setPedAppearance(charPed, skinData)
         end
         cb("ok")
     else
