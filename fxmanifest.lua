@@ -18,6 +18,7 @@ client_scripts {
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
+    '@qb-apartments/config.lua',
     'server/main.lua'
 }
 
@@ -27,11 +28,9 @@ files {
     'html/index.html',
     'html/style.css',
     'html/reset.css',
-    'html/script.js',
-    'html/musica.mp3',
-    'html/click.wav',
-    'html/qb-pixel.png',
-    'html/profanity.js',
+    'html/vue.js',
+    'html/swal2.js',
+    'html/profanity.js'
 }
 
 dependencies {

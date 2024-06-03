@@ -1,8 +1,8 @@
 local Translations = {
     notifications = {
-        ["char_deleted"] = "Character deleted!",
-        ["deleted_other_char"] = "You successfully deleted the character with citizen id %{citizenid}.",
-        ["forgot_citizenid"] = "You forgot to input a citizen id!",
+        ["char_deleted"] = "Charakter gelöscht!",
+        ["deleted_other_char"] = "Du hast erfolgreich deinen Charakter mit der Citizen ID %{citizenid} gelöscht.",
+        ["forgot_citizenid"] = "Du hast die Citizen ID vergessen!",
     },
 
     commands = {
@@ -19,55 +19,55 @@ local Translations = {
     },
 
     misc = {
-        ["droppedplayer"] = "You have disconnected from QBCore"
+        ["droppedplayer"] = "Du hast dich ausgeloggt"
     },
 
     ui = {
         -- Main
-        characters_header = "My Characters",
-        emptyslot = "Empty Slot",
-        play_button = "Play",
-        create_button = "Create Character",
-        delete_button = "Delete Character",
+        characters_header = "Mein Charakter",
+        emptyslot = "Leerer Platz",
+        play_button = "Lebe dein Leben",
+        create_button = "Erschaffe deinen Charakter",
+        delete_button = "Lösche deinen Charakter",
 
         -- Character Information
-        charinfo_header = "Character Information",
-        charinfo_description = "Select a character slot to see all information about your character.",
+        charinfo_header = "Charakter Information",
+        charinfo_description = "Wähle deinen Charakter aus, um alle Infos über ihn zu sehen.",
         name = "Name",
-        male = "Male",
-        female = "Female",
-        firstname = "First Name",
-        lastname = "Last Name",
-        nationality = "Nationality",
-        gender = "Gender",
-        birthdate = "Birthdate",
+        male = "Männlich",
+        female = "Weiblich",
+        firstname = "Vorname",
+        lastname = "Nachname",
+        nationality = "Geburtsland",
+        gender = "Geschlecht",
+        birthdate = "Geburtstag",
         job = "Job",
-        jobgrade = "Job Grade",
-        cash = "Cash",
+        jobgrade = "Job Rang",
+        cash = "Bargeld",
         bank = "Bank",
-        phonenumber = "Phone Number",
-        accountnumber = "Account Number",
+        phonenumber = "Handynummer",
+        accountnumber = "Account Nummer",
 
-        chardel_header = "Character Registration",
+        chardel_header = "Charakterregistrierung",
 
         -- Delete character
-        deletechar_header = "Delete Character",
-        deletechar_description = "Are You Sure You Want To Delete Your Character?",
+        deletechar_header = "Charakter löschen",
+        deletechar_description = "Sicher?",
 
         -- Buttons
-        cancel = "Cancel",
-        confirm = "Confirm",
+        cancel = "Abbrechen",
+        confirm = "Bestätigen",
 
         -- Loading Text
-        retrieving_playerdata = "Retrieving player data",
-        validating_playerdata = "Validating player data",
-        retrieving_characters = "Retrieving characters",
-        validating_characters = "Validating characters",
+        retrieving_playerdata = "Spielerdaten abrufen",
+        validating_playerdata = "Spielerdaten validieren",
+        retrieving_characters = "Charaktere abrufen",
+        validating_characters = "Charakter validieren",
 
         -- Notifications
-        ran_into_issue = "We ran into an issue",
-        profanity = "It seems like you are trying to use some type of profanity / bad words in your name or nationality!",
-        forgotten_field = "It seems like you have forgotten to input one or multiple of the fields!"
+        ran_into_issue = "Wir sind auf ein Problem gestoßen",
+        profanity = "Es sieht so aus, als würden sie verbotene Wörter verwenden!",
+        forgotten_field = "Es scheint, als hätten Sie vergessen, ein oder mehrere der Felder einzugeben!"
     }
 }
 
